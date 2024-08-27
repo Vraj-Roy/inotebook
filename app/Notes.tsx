@@ -4,9 +4,13 @@ import Card from "./components/Card";
 import { Suspense, useEffect, useState } from "react";
 import Loading from "./Loading";
 import AddNote from "./components/AddNote";
-
+interface Note {
+  _id: number;
+  title: string;
+  content: string;
+}
 export default function Notes() {
-  const [notes, setnotes] = useState([]);
+  const [notes, setnotes] = useState<Note[]>([]);
   const [modal, setModal] = useState<HTMLDialogElement | null>(null);
 
   const [data, setData] = useState({ title: "", content: "" });
@@ -19,7 +23,7 @@ export default function Notes() {
       credentials: "same-origin",
     });
 
-    const notes = await response.json();
+    const notes: Note[] = await response.json();
     setnotes(notes);
     console.log(notes);
   };
@@ -110,13 +114,7 @@ export default function Notes() {
 
       <main className=" flex gap-8  flex-wrap  m-auto w-[80vw]">
         {notes.map((n, index) => (
-          <Card
-            key={n._id}
-            title={n.title}
-            content={n.content}
-            id={n._id}
-            className={`item ${index === n.length - 1 ? "mr-auto" : ""}`}
-          />
+          <Card key={n._id} title={n.title} content={n.content} id={n._id} />
         ))}
       </main>
     </>
