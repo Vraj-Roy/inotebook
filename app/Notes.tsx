@@ -63,10 +63,7 @@ export default function Notes() {
           Add Note
         </button>
       </div>
-      <dialog
-        id="my_modal_1"
-        className="modal flex justify-center mt-[20vh] scale-110"
-      >
+      <dialog id="my_modal_1" className="modal flex justify-center mt-[20vh] ">
         <div className="   flex-flexcol bg-orange-300   self-start   text-primary-content w-96 rounded-md p-6 border-2 modal-box  ">
           <div className="">
             <h2 className="card-title text-black border-2   rounded  my-2">
