@@ -7,10 +7,11 @@ import AddNote from "./components/AddNote";
 
 export default function Notes() {
   const [notes, setnotes] = useState([]);
+  const [modal, setModal] = useState<HTMLDialogElement | null>(null);
 
   const [data, setData] = useState({ title: "", content: "" });
   const getNotes = async () => {
-    const response = await fetch("http://localhost:3000/api/notes", {
+    const response = await fetch("/api/notes", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -23,6 +24,8 @@ export default function Notes() {
     console.log(notes);
   };
   useEffect(() => {
+    setModal(document.getElementById("my_modal_1") as HTMLDialogElement | null);
+
     getNotes();
   }, []);
   const onChange = async (e: any) => {
@@ -56,10 +59,7 @@ export default function Notes() {
     <>
       {/* Open the modal using document.getElementById('ID').showModal() method */}
       <div className="block w-full">
-        <button
-          className="btn m-auto block"
-          onClick={() => document.getElementById("my_modal_1").showModal()}
-        >
+        <button className="btn m-auto block" onClick={() => modal.showModal()}>
           Add Note
         </button>
       </div>
@@ -90,7 +90,7 @@ export default function Notes() {
                 <button
                   onClick={(e) => {
                     onSubmit(e);
-                    document.getElementById("my_modal_1").close();
+                    modal.close();
                   }}
                   className="btn bg-orange-500 text-white"
                 >
