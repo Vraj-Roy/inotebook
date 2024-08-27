@@ -55,11 +55,17 @@ export default function Notes() {
     setData({ title: "", content: "" });
     getNotes();
   };
+  const openModal = () => {
+    // Checking if the modal is set before trying to open it
+    if (modal) {
+      modal.showModal();
+    }
+  };
   return (
     <>
       {/* Open the modal using document.getElementById('ID').showModal() method */}
       <div className="block w-full">
-        <button className="btn m-auto block" onClick={() => modal.showModal()}>
+        <button className="btn m-auto block" onClick={openModal}>
           Add Note
         </button>
       </div>
@@ -90,7 +96,7 @@ export default function Notes() {
                 <button
                   onClick={(e) => {
                     onSubmit(e);
-                    modal.close();
+                    modal?.close();
                   }}
                   className="btn bg-orange-500 text-white"
                 >
