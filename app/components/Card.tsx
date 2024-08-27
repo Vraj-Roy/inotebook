@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Card = ({ id, title, content }) => {
+const Card = ({ id, title, content }: any) => {
   const [data, setData] = useState({ id, title, content });
   const [mode, setMode] = useState("Edit");
   const [hidden, setHidden] = useState(false);
