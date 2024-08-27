@@ -44,7 +44,7 @@ const Card = ({ id, title, content }: any) => {
   return (
     <div
       className={
-        "flex flex-col     text-primary-content w-96 rounded-md p-6 border-2  " +
+        "flex flex-col text-primary-content w-96 rounded-md p-6 border-2  " +
         (hidden ? "hidden" : "")
       }
     >
